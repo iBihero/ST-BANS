@@ -1,0 +1,152 @@
+#
+# ST-BANS
+#
+# Encontrou algum bug ou tem uma sugestão?
+# Me contate pelo Discord: ! ! •.¸♡ Stanic ♡¸.•#8474
+#
+# Variáveis:
+#
+# {nick} - Retorna a pessoa punida
+# {tipo} - Retorna o tipo da punição
+# {motivo} - Retorna o motivo
+# {staffer} - Retorna quem aplicou a punição
+# {data} - Retorna a data da punição
+# {horario} - Retorna o horário da punição
+# {tempo} - Retorna a duração da punição
+# {id} - Retorna o ID
+# {vitima} - Retorna a vitima (report)
+#
+
+Discord: #Configuração do Discord
+  token: "" #Token do bot
+  punicaoChannel: "" #ID do canal para enviar os bans
+  bansMsg: #Mensagem que será enviada quando algum banimento acontecer
+    titulo: "Punicao" #Tipo da mensagem
+    descricao: "Punido(a): {nick} @n@n Tipo: {tipo} @n Staffer: {staffer} @n Motivo: {motivo} @n Data: {data} @n Hora: {horario} @n Tempo: {tempo} @n ID: {id}" #Descrição da mensagem
+  reportChannel: "" #ID do canal para enviar os reports
+  reportsMsg: #Mensagem que será enviada quando algum report for enviado
+    titulo: "Report"
+    descricao: "Acusado(a): {nick} @n Vitima: {vitima} @n Motivo: {motivo}"
+
+Config:
+  #Permissões
+  permBan: "stbans.ban" #Permissão para usar o comando /ban e /tempban
+  permUnban: "stbans.unban" #Permissão para usar o comando /unban
+  permKick: "stbans.kick" #Permissão para usar o comando /kick
+  permWarn: "stbans.warn" #Permissão para usar o comando /warn
+  permCheck: "stbans.check" #Permissão para usar o comando /checkplayer
+  permMute: "stbans.mute" #Permissão para usar o comando /mute e /tempmute
+  permUnmute: "stbans.unmute" #Permissão para usar o comando /unmute
+  permReport: "stbans.report" #Permissão para usar o comando /report
+  permReportAdmin: "stbans.reportadmin" #Permissão para receber notificações dos reportes
+  permSS: "stbans.screenshare" #Permissão para usar o comando /ss
+  #Configurações
+  comandosBloqueados: #Comandos que serão bloqueados para quem tiver mute
+    - "/l"
+    - "/g"
+
+Mensagens:
+  somenteInGame: "&cEsse comando so pode ser executado in-game."
+  playerInexistente: "&cEssa pessoa esta offline."
+  jaTemPunicao: "&cEssa pessoa ja tem uma punicao."
+  naoTemPunicao: "&cEssa pessoa nao tem uma punicao."
+  semPerm: "&cVoce nao possui permissao para isso."
+  argsBan: "&cUtilize /ban (nick) (motivo)"
+  argsMute: "&cUtilize /mute (nick) (motivo)"
+  argsUnban: "&cUtilize /unban (Nick)"
+  argsUnmute: "&cUtilize /unmute (Nick)"
+  argsTempBan: "&cUtilize /tempban (nick) (Duracao) (motivo)"
+  argsTempMute: "&cUtilize /tempMute (nick) (Duracao) (motivo)"
+  argsKick: "&cUtilize /kick (nick) (motivo)"
+  argsWarn: "&cUtilize /warn (nick) (motivo)"
+  argsCheck: "&cUtilize /checkplayer (nick)"
+  argsReport: "&cUtilize /report (nick) (motivo)"
+  unbanSucess: "&aUnban em {nick} foi feito com sucesso!"
+  unmuteSucess: "&aUnmute em {nick} foi feito com sucesso!"
+  warnSucess: "&aVoce deu um warn em {nick} com sucesso!"
+  reportSucess: "&aReport enviado com sucesso!"
+  ssSetSucess: "&aScreenShare setada com sucesso!"
+  unmutePlayer: "&aSeu mute foi revogado!"
+  ssLiberada: "&aVoce foi liberado(a) da ss"
+  ssPuxada: "&aVoce foi puxado para a ss"
+  ssLiberadaBroadcast:
+    - ""
+    - "&a{nick} foi liberado(a) da ss"
+    - ""
+  ssPuxadaBroadcast:
+    - ""
+    - "&a{nick} foi puxado(a) para a ss"
+    - ""
+  banAplicado:
+    - ""
+    - "&aVocê baniu o(a): &f{nick}"
+    - "&eMotivo: &7{motivo}"
+    - ""
+  muteAplicado:
+    - ""
+    - "&aVocê mutou o(a): &f{nick}"
+    - "&eMotivo: &7{motivo}"
+    - ""
+  mutePlayer:
+    - ""
+    - "&aVocê foi mutado(a)!"
+    - "&eMotivo: &7{motivo}"
+    - "&eStaffer: &7{staffer}"
+    - ""
+  broadcastPunicao:
+    - ""
+    - "&cUma punicao foi feita!"
+    - ""
+    - "&fPunido(a): &7{nick}"
+    - ""
+    - "&fTipo: &7{tipo}"
+    - "&fMotivo: &7{motivo}"
+    - "&fStaffer: &7{staffer}"
+    - ""
+  warnPlayer:
+    - ""
+    - "&cVoce recebeu um warn!"
+    - ""
+    - "&fMotivo: &7{motivo}"
+    - ""
+  warnBroadcast:
+    - ""
+    - "&c{nick} recebeu um warn!"
+    - ""
+    - "&fMotivo: &7{motivo}"
+    - ""
+  reportNotificacao:
+    - ""
+    - "&aUm novo report foi enviado"
+    - ""
+    - "&fAcusado(a): &7{nick}"
+    - "&fVitima: &7{vitima}"
+    - "&fMotivo: &7{motivo}"
+    - ""
+  ssHelp:
+    - ""
+    - "&aLista de comandos para SS"
+    - ""
+    - "&f/ss setloc - Seta o local da screenshare"
+    - "&f/ss (nick) - Puxa/Libera alguma pessoa"
+    - ""
+  nPodeFalarNoChat:
+    - ""
+    - ""
+    - "&cVoce nao pode falar no chat pois tem um mute"
+    - ""
+    - ""
+  kickBan: "&4SERVIDOR @n&cVoce foi banido(a)! @n@n &fStaffer: &7{staffer} @n &fMotivo: &7{motivo} @n &fTempo: &7{tempo} @n &fData: &7{data} @n &fHorario: &7{horario} @n@n &cSua punicao foi aplicada incorretamente? @n &cCrie um appeal usando o ID: &b{id} @n"
+  kickPlayer: "&4SERVIDOR @n&cVoce foi kickado(a)! @n@n &fStaffer: &7{staffer} @n &fMotivo: &7{motivo} @n"
+
+ScreenShare:
+  Tab: #Tab que será mostrado para a pessoa que está sendo telada
+    ativar: true #Necessita do ProtocolLib
+    Header: "&aVoce esta em screenshare! @n@n &fSiga o que o staffer pedir"
+    Footer: "&cSe deslogar voce levara ban!"
+
+#
+#Não altere mais nada daqui pra baixo
+#
+
+Locais:

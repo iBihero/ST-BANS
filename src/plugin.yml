@@ -1,0 +1,15 @@
+name: ST-BANS
+version: 1.0
+main: me.stanic.bans.Main
+commands:
+  ban:
+  tempban:
+  unban:
+  mute:
+  tempmute:
+  unmute:
+  kick:
+  warn:
+  checkplayer:
+  report:
+  ss:
