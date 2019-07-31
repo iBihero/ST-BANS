@@ -138,6 +138,7 @@ Mensagens:
     - ""
   kickBan: "&4SERVIDOR @n&cVoce foi banido(a)! @n@n &fStaffer: &7{staffer} @n &fMotivo: &7{motivo} @n &fTempo: &7{tempo} @n &fData: &7{data} @n &fHorario: &7{horario} @n@n &cSua punicao foi aplicada incorretamente? @n &cCrie um appeal usando o ID: &b{id} @n"
   kickPlayer: "&4SERVIDOR @n&cVoce foi kickado(a)! @n@n &fStaffer: &7{staffer} @n &fMotivo: &7{motivo} @n"
+  punicaoRevogadaKick: "&4SERVIDOR @n&cSua punicao foi revogada! @n@n&eRelogue para entrar no servidor @n&aEsperamos que tenha aprendido a licao dessa vez"
 
 ScreenShare:
   Tab: #Tab que será mostrado para a pessoa que está sendo telada

@@ -42,8 +42,7 @@ class TempbanCMD : CommandExecutor {
                         "Ban",
                         TempoUtils.getDataEDia(),
                         TempoUtils.getHorario(),
-                        args[1],
-                        "#${Bans.all.size + 1}"
+                        args[1]
                     )
                 }
             } else {

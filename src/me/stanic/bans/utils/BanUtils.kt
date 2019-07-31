@@ -22,7 +22,12 @@ class BanUtils {
         //Verificando se tem uma punição
 
         fun temPunicao(p: String): Boolean {
-            return Main.instance!!.cache.containsKey(p)
+            var verificar = false
+            if (Main.instance!!.cache.containsKey(p)) {
+                val tipo = Main.instance!!.cache[p]!!.tipo
+                if (tipo == "Ban") verificar = true
+            }
+            return verificar
         }
 
     }
@@ -223,7 +228,7 @@ class BanUtils {
                     data
                 ).replace("{horario}", horario).replace(
                     "{tempo}",
-                    TempoUtils().getTempo(tempoDuracaoDC)
+                    if (tempo == null) "Permanente" else TempoUtils().getTempo(tempoDuracaoDC)
                 ).replace("{id}", id)
             )
         channel.sendMessage(embed.build()).complete()

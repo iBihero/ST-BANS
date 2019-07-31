@@ -20,6 +20,7 @@ class InventoryEvents : Listener {
                 23 -> BanUtils().run("BAN", null)
             }
             e.isCancelled = true
+            p.closeInventory()
         }
     }
 
@@ -49,6 +50,7 @@ class InventoryEvents : Listener {
                 42 -> BanUtils().run("BAN", TimeUnit.DAYS)
             }
             e.isCancelled = true
+            p.closeInventory()
         }
     }
 
@@ -62,6 +64,7 @@ class InventoryEvents : Listener {
                 23 -> MuteUtils().run("MUTE", null)
             }
             e.isCancelled = true
+            p.closeInventory()
         }
     }
 
@@ -90,6 +93,14 @@ class InventoryEvents : Listener {
                 33 -> MuteUtils().run("SDC", TimeUnit.DAYS)
                 42 -> MuteUtils().run("MUTE", TimeUnit.DAYS)
             }
+            e.isCancelled = true
+            p.closeInventory()
+        }
+    }
+
+    @EventHandler
+    fun onCheckClick(e: InventoryClickEvent) {
+        if (e.inventory.title.contains("§aPunição dê")) {
             e.isCancelled = true
         }
     }

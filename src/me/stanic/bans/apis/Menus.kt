@@ -1,6 +1,8 @@
 package me.stanic.bans.apis
 
+import me.stanic.bans.Main
 import me.stanic.bans.utils.ItemBuilder
+import me.stanic.bans.utils.TempoUtils
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
@@ -13,9 +15,7 @@ class Menus {
         motivo: String,
         tipo: String,
         data: String,
-        horario: String,
-        tempo: String?,
-        id: String
+        horario: String
     ) {
         val inv = Bukkit.createInventory(null, 5 * 9, "§aConfirme a punição - Ban")
         inv.setItem(
@@ -76,8 +76,7 @@ class Menus {
         tipo: String,
         data: String,
         horario: String,
-        tempo: String,
-        id: String
+        tempo: String
     ) {
         val inv = Bukkit.createInventory(null, 6 * 9, "§aConfirme a punição - Tempban")
         inv.setItem(
@@ -276,9 +275,7 @@ class Menus {
         motivo: String,
         tipo: String,
         data: String,
-        horario: String,
-        tempo: String?,
-        id: String
+        horario: String
     ) {
         val inv = Bukkit.createInventory(null, 5 * 9, "§aConfirme a punição - Mute")
         inv.setItem(
@@ -339,8 +336,7 @@ class Menus {
         tipo: String,
         data: String,
         horario: String,
-        tempo: String,
-        id: String
+        tempo: String
     ) {
         val inv = Bukkit.createInventory(null, 6 * 9, "§aConfirme a punição - Tempmute")
         inv.setItem(
@@ -535,28 +531,23 @@ class Menus {
 
     fun checkPlayer(
         p: Player,
-        nick: String,
-        motivo: String,
-        tipo: String,
-        data: String,
-        horario: String,
-        tempo: String?,
-        id: String
+        nick: String
     ) {
+        val info = Main.instance!!.cache[nick]!!
         val inv = Bukkit.createInventory(null, 3 * 9, "§aPunição dê $nick")
         inv.setItem(
             13,
-            ItemBuilder(Material.EXP_BOTTLE).setName("§a$tipo").addLores(
+            ItemBuilder(Material.EXP_BOTTLE).setName("§a${info.tipo}").addLores(
                 listOf(
                     "",
                     "§bInformações sobre a punição",
                     "",
                     "§fStaffer: §7${p.name}",
-                    "§fMotivo: §7$motivo",
-                    "§fData: §7$data",
-                    "§fHorário: §7$horario",
-                    "§fDuração: §7$tempo",
-                    "§fID: §7#$id",
+                    "§fMotivo: §7${info.motivo}",
+                    "§fData: §7${info.data}",
+                    "§fHorário: §7${info.horario}",
+                    "§fDuração: §7${if (info.tempo == null) "Permanente" else TempoUtils().getTempo(info.tempo!! - System.currentTimeMillis())}",
+                    "§fID: §7${info.id}",
                     ""
                 )
             ).toItemStack()

@@ -40,9 +40,7 @@ class MuteCMD : CommandExecutor {
                         motivo,
                         "Mute",
                         TempoUtils.getDataEDia(),
-                        TempoUtils.getHorario(),
-                        "Permanente",
-                        "#${Bans.all.size + 1}"
+                        TempoUtils.getHorario()
                     )
                 }
             } else {

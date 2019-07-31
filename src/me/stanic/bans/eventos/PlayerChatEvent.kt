@@ -21,6 +21,7 @@ class PlayerChatEvent : Listener {
                     val rs = stmt.executeQuery("SELECT * FROM bans WHERE Nick='${p.name}'")
                     if (rs.next()) {
                         stmt2.execute("DELETE FROM bans WHERE Nick='${p.name}'")
+                        Main.instance!!.cache.remove(p.name)
                     }
                     c.close()
                     stmt.close()

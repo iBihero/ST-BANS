@@ -40,9 +40,7 @@ class BanCMD : CommandExecutor {
                         motivo,
                         "Ban",
                         TempoUtils.getDataEDia(),
-                        TempoUtils.getHorario(),
-                        "Permanente",
-                        "#${Bans.all.size + 1}"
+                        TempoUtils.getHorario()
                     )
                 }
             } else {

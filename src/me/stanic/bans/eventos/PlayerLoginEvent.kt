@@ -41,6 +41,25 @@ class PlayerLoginEvent : Listener {
                         val rs = stmt.executeQuery("SELECT * FROM bans WHERE Nick='${p.name}'")
                         if (rs.next()) {
                             stmt2.execute("DELETE FROM bans WHERE Nick='${p.name}'")
+                            Main.instance!!.cache.remove(p.name)
+
+                            e.kickMessage = Main.cnfg!!.getString("Mensagens.punicaoRevogadaKick").replace("&", "§")
+                                .replace("@n", "\n").replace(
+                                "{nick}",
+                                info.nick
+                            ).replace("{staffer}", info.staffer).replace(
+                                "{motivo}",
+                                info.motivo
+                            ).replace("{tipo}", info.tipo).replace(
+                                "{data}",
+                                info.data
+                            ).replace(
+                                "{horario}",
+                                info.horario
+                            ).replace("{tempo}", "Permanente").replace(
+                                "{id}",
+                                info.id
+                            )
                         }
                         c.close()
                         stmt.close()

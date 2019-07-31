@@ -2,8 +2,6 @@ package me.stanic.bans.comandos
 
 import me.stanic.bans.Main
 import me.stanic.bans.apis.Menus
-import me.stanic.bans.utils.BanUtils
-import me.stanic.bans.utils.TempoUtils
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -26,18 +24,8 @@ class CheckPlayerCMD : CommandExecutor {
                 if (args.isEmpty()) {
                     sender.sendMessage(cnfg.getString("Mensagens.argsCheck").replace("&", "§"))
                 } else {
-                    if (BanUtils.temPunicao(args[0])) {
-                        val p = Main.instance!!.cache[args[0]]!!
-                        Menus().checkPlayer(
-                            sender,
-                            args[0],
-                            p.motivo,
-                            p.tipo,
-                            p.data,
-                            p.horario,
-                            if (p.tempo == null) "Permanente" else TempoUtils().getTempo(p.tempo!! - System.currentTimeMillis()),
-                            p.id
-                        )
+                    if (Main.instance!!.cache.containsKey(args[0])) {
+                        Menus().checkPlayer(sender, args[0])
                     } else {
                         sender.sendMessage(cnfg.getString("Mensagens.naoTemPunicao").replace("&", "§"))
                     }
